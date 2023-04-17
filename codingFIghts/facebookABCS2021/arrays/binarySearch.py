@@ -1,10 +1,10 @@
 #vas sacando mitades del array -> n log(n)
 def binarySearch (arr, l, r, x):
   
-    # Si el right es mayor 1 o igual a 1, aun se pude sacar mitad
+    # Si el right es mayor l o igual a l, aun se pude sacar mitad
     if r >= l:
         
-        #division sin punto decimal de la mitad (en caso de que la mitad sea impar)
+        #division sin punto decimal de la mitad entre l y r(en caso de que la mitad sea impar)
         mid = l + (r - l) // 2
   
         # checas si el elemento buscado es la mitad del array
