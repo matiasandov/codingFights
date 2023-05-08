@@ -1,21 +1,14 @@
-#usare un diccionario para usar los valores como keys como en el de anagram y en cada value irá su ocurrencia
-#se devolverá el par cuyo value sea 1
-# no pude con lo del diccionario
-def find_unique(haystack):
-    # Write your code here
-
-    #de toda la lista checas elemento por elemento, cuantas veces aparece, si solo aparece una vez, lo guardas en unique 
-    unique =[i for i in haystack if haystack.count(i)==1]
-    #como devulves una lista, sacas el primer elemento y lo regresas
-    return unique.pop()
-
-def unique(word):
+def uniqueNumber(arr):
+    dicc = {}
     
-    for i in word:
-        unique = word.count(i)
-        if unique >1:
-            return False
-        
-    return True
-        
-print(unique("abc"))
+    for i in range(len(arr)):
+        if i not in dicc:
+            dicc[i] = 1
+        else:
+            dicc[i] += 1
+            
+    for key, value in dicc.items():
+        if value == 1:
+            return dicc[key]
+
+print(uniqueNumber([1,2,2,3,3]))
