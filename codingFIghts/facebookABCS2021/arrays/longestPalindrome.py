@@ -1,49 +1,34 @@
 def longestPalindrome(s):
-    leng = len(s)
-    maxLen = 1
     start = 0
-    low = 0
-    high = 0
+    maxLength = 0
 
-    for i in range(1, leng):
-        #------primero considerar que podria ser un palindromo par----
-        low = i-1
-        high = i
+    #con los loops anidados vas a hacer posible que todas las letras se comparen contra todas las letras
+    for i in range(len(s)):
+        
+        # Cuando es impar necesita encontrar un espejo a partir de la mitada por eso empiezan en el mismo indez
+        left = i
+        right = i
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            #tienes que sumarle +1 porque esta indexado en 0 la longitud
+            if right - left + 1 > maxLength:
+                start = left
+                #tienes que sumarle +1 porque esta indexado en 0 la longitud
+                maxLength = right - left + 1
+            left -= 1
+            right += 1
 
-        #va a considerar todos los posibles palindromos espejos a "i"
-        while low >= 0 and high < leng and s[low] == s[high]:
-            low -= 1
-            high += 1
+        # PAR necesita empezar en diferentes indexes porque si no jamas encontratra un espejo
+        #ejemplo #lobbox -> cuando llegue a str[2] o sea la primera b encontrara enseguida la sig b gracias a right = i+1
+        left = i
+        right = i + 1
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            if right - left + 1 > maxLength:
+                start = left
+                maxLength = right - left + 1
+            left -= 1
+            right += 1
 
-        #una vez acabado el loop te regresas a las posiciones anteriores y
-        #y actualizas la max length si es que es mayor a la anterior
-        low += 1
-        high -= 1
+    return s[start:start+maxLength]
 
-        #Aqui actualizas nueva max length (sumas +1 por la len de python)
-        if (high-low+1) > maxLen and s[low] == s[high]:
-            start = low
-            maxLen = high-low+1
-
-        #encontrar palindromo impar ------------------------------
-        low = i-1
-        high = i+1
-
-        #va a considerar todos los posibles palindromos espejos a "i"
-        while low >= 0 and high < leng and s[low] == s[high]:
-            low -= 1
-            high += 1
-
-        #una vez acabado el loop te regresas a las posiciones anteriores y
-        #y actualizas la max length si es que es mayor a la anterior
-        low += 1
-        high -= 1
-
-        #actualizas max length si es impar
-        if (high-low+1) > maxLen and s[low] == s[high]:
-            start = low
-            maxLen = high-low+1
-    #regresas substring desde el inicio del substring hasta su ultimo caracter del palindromo
-    return s[start: start + maxLen]
 
 
