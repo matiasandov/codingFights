@@ -1,18 +1,42 @@
-#Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
 
-#You may assume that each input would have exactly one solution, and you may not use the same element twice.
+        #constraints
+        #can the element i in the sequence be the same as the target? no
+        
+        #para lograr esto necesitas usar una hash table
+        # for i in len(nums):
+        #     if nums[i] > target:
+        #         continue
+        #     else:
+        #         if target - nums[i] in nums:
+        #             return [i, other index]
 
-#You can return the answer in any order.
+        #inicializar hash table vacia
 
-#time complexity is O^2 (2 nested loops
-# space complexity: O(1) beacuse you only need to store a constant value (2 integers always)
-#not depending of an n length
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        #recorres cada elemento
-        for i in range(len(nums)):
-            #recorres los siguientes elementos a i
-            for j in range(i + 1, len(nums)):
-                #si encuentras en j el numero que  es el complemento (si le restas i al target te debe dar el complemento)
-                if nums[j] == target - nums[i]:
-                    return [i, j]
+        hash = {}
+
+        #es bueno guardar len para no estarlo haciendo cada vez
+        n = len(nums)
+
+        for i in range(n):
+            #key, value
+            #valor, posicion -> asi puedo buscar por key en 0(1)
+            hash[nums[i]] = i
+        
+        #recorres diccionario y array a la par
+        for i in range(n):
+            y = target - nums[i] 
+            if y in hash and hash[y] != i:
+                return [i, hash[y]]
+        
+        #tienes que preguntar!!
+        #sino regresar vacio
+        return []
+
+            
