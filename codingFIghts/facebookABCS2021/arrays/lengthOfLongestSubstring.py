@@ -17,14 +17,16 @@ class Solution(object):
         # Diccionario donde guardarás el index más reciente de cada elemento
         char_map = {}
         max_length = 0
-        #index de incio de la max length
+        #index de inicio de la max length
         start = 0
 
-        #iteras accediendo a indice para poder guardarlo en lugar de for i in s
+        #iteras accediendo a index para poder guardarlo en lugar de for i in s
         for end in range(len(s)):
-            # si ya se repitio el elemento en posicion "end", guardas la posición siguiente de la ultima vez que se encontro
-            # es decir en "dvdf" se guardaria la posición [1] de s[1] = "v"
+            # si ya se repitio el elemento en posicion "end",
+           
             if s[end] in char_map:
+                # recorres el inicio de la nueva substring de los caracteres unicos
+                #-----------------------------------PARTE MAS IMPORTANTE--------------------------------------
                 start = max(start, char_map[s[end]] + 1)
 
             #guardas la última posicion vista (posicion actual)  del caracter actual
