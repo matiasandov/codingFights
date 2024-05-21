@@ -31,4 +31,47 @@ def longestPalindrome(s):
     return s[start:start+maxLength]
 
 
+def longestPalindrome2(s):
+    #la clave es en que cada elemento debera tener un espejo
+    #puedes tener palindromos pares o impares y debes evaluar ambos casos
+    #par: "abba" mitad1= 1 mitad2=2
+    
+    lFinal = 0
+    rFinal = 0
+    maxL = 0
+    
+    for i in range(len(s)):
+        #impar
+        l = i
+        r = i
+        # b c o d e e d o
+        
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            lenTemp = r-l + 1
+            if lenTemp > maxL:
+                maxL = lenTemp
+                lFinal = l
+                rFinal = r
+            l-=1
+            r+=1
+        
+        #par
+        l = i
+        r = i + 1
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            lenTemp = r-l + 1
+            if lenTemp > maxL:
+                maxL = lenTemp
+                lFinal = l
+                rFinal = r
+            l-=1
+            r+=1
+    
+    return s[lFinal: rFinal]
+
+print(longestPalindrome2("askdloddolp"))
+            
+        
+
+
 

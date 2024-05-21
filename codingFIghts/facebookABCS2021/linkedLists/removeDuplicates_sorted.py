@@ -7,8 +7,6 @@ class ListNode(object):
         self.val = val
         self.next = next
 class Solution(object):
-    #Space complexity : O(1) -> lo unico que almacenas es un solo nodo en una variable.
-    #time complexity : O(N) 
     def deleteDuplicates(self, head):
         """
         :type head: ListNode
@@ -34,14 +32,14 @@ class Solution(object):
         temp = 1
         1->2
 
-        loop2 - unes avanzando:
+        loop2 - unes:
         temp = 2
 
         loop3 - apuntas :
         temp = 2
         2->3
 
-        loop4 - unes avanzando:
+        loop4 - unes:
         temp = 3
 
         toop5 
