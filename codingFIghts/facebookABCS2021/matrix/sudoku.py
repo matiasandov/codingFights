@@ -2,16 +2,18 @@
     
 def isValidSudoku( board):
     res = []
-    for i in range(9):
+
+    #recorres row
+    for i in range(0,9):
+        #recorres columns
         for j in range(9):
             element = board[i][j]
-            if element != '.':
-                #debes de cambiar de posicion j y element porque sino va a ser lo mismo que (i, element ) y seria incorrecto
-                res += [(i, element), ( j, element), (i // 3, j // 3, element)]
-
-    print(len(res))
-    print("-----")
-    print(len(set(res)))
+            
+            if board[i][j] != ".":
+                #el orden de la segunda tupla importa porque sino va a confundirse con la coordenada en i y el set solo acepta tupla por tupla no el array
+                #es += en lugar de append porque se hace un array enorme
+                                                    #tercera tupla, numero del bloque, hay 3 bloques entoces iran de 0 a 2
+                res += [(i, element), (element, j), (i//3, j//3, element)]
     
     return len(res) == len(set(res))
         

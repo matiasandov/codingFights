@@ -1,3 +1,4 @@
+#for i -> cada i sera un espejo
 def longestPalindrome(s):
     start = 0
     maxLength = 0

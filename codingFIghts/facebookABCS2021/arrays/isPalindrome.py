@@ -1,5 +1,5 @@
 
-
+#checar cual es la mejor manera de checar si es anagram
 #manipularlo como una string
 def isPalindrome(self,x):
 
